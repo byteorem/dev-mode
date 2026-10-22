@@ -1,0 +1,11 @@
+{
+  "name": "dev-mode",
+  "owner": { "name": "byteorem" },
+  "plugins": [
+    {
+      "name": "dev-mode",
+      "source": "./plugins/dev-mode",
+      "description": "Engineering workflow: a router that picks a playbook, reusable techniques, principles, and gates on anything other people can see."
+    }
+  ]
+}
