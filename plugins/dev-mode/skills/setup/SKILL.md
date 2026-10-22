@@ -16,8 +16,7 @@ Write the repo's `## dev-mode` block: the data the router, `to-task`, and `triag
 - Tracker: jira, project PAY
 ```
 
-- `Tracker:` names a file in [../dev-mode/trackers/](../dev-mode/trackers/): `docket`, `jira` with its project key, `github`, or `todo`.
-- `States:` maps `triage`'s state names to GitHub labels the repo already uses. Leave the line out when the defaults stand.
+`Tracker:` names a file in [../dev-mode/trackers/](../dev-mode/trackers/): `docket`, `jira` with its project key, `github`, or `todo`.
 
 ## Steps
 
@@ -30,13 +29,11 @@ Write the repo's `## dev-mode` block: the data the router, `to-task`, and `triag
 2. **Ask.** One decision at a time, recommended answer first so the user can accept in a word. Skip any decision exploration already settled.
    - **Tracker.** Jira keys in the history → `jira` with that key. Issues already in use on GitHub → `github`. The user's own repo otherwise → `docket`. `todo` only when they want nothing persisted.
    - **Config home.** The user's own repo, or no remote → the committed instructions file: `CLAUDE.md`, or `AGENTS.md` when `CLAUDE.md` only imports it. Someone else's repo → `CLAUDE.local.md`. If neither `CLAUDE.md` nor `AGENTS.md` exists, ask which to create.
-   - **State names.** Only for `github`, and only when the repo already uses its own labels for these states. Collect the mapping so `triage` reuses those labels instead of adding duplicates.
 
 3. **Draft.** Show the block and the file it goes in. Let the user edit it.
 
 4. **Write.** Replace an existing block in place, or append one. Leave the rest of the file as it was.
    - `CLAUDE.local.md`: if `git check-ignore CLAUDE.local.md` finds no rule, add it to `.git/info/exclude` so it stays out of the repo without touching `.gitignore`.
-   - `github`: create each state label the repo lacks (`gh label create`), as part of the approved draft.
 
 5. **Offer a verify skill.** No `verify-*` skill and an app that's hard to drive by hand → offer `verification-skill` once. On no, move on.
 

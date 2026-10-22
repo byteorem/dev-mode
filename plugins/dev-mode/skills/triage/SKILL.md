@@ -19,7 +19,7 @@ Move tasks in the repo's tracker through a small state machine until each one is
 | `ready-for-human` | Brief attached, but it needs the user's judgment, access, or hands |
 | `wontfix` | Closed with the reason |
 
-A task holds one state. A `States:` line in the block maps these names to the repo's own GitHub labels. `needs-info` returns to `needs-triage` once the questions are answered. The user can override any transition.
+A task holds one state. `needs-info` returns to `needs-triage` once the questions are answered. The user can override any transition.
 
 On Jira and GitHub, start every comment triage writes with `> Written by an agent during triage.`
 

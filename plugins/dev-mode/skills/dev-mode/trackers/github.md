@@ -1,6 +1,6 @@
 # Tracker: GitHub Issues
 
-Issues live in the repo's GitHub Issues, through the `gh` CLI, which infers the repo inside a clone. Every write here is public or shared, so show it and wait for the user's yes, per the router. Pass bodies with `--body-file` from a scratch file.
+Issues live in the repo's GitHub Issues, through the `gh` CLI, which infers the repo inside a clone. Every write here is public or shared, so show it and wait for the user's yes, per the router. Pass bodies with `--body-file` from a scratch file. GitHub is used for basic tracking only: issues, comments, assignees, and GitHub's default labels. No custom labels or Projects.
 
 ## Create
 
@@ -12,7 +12,7 @@ Issues live in the repo's GitHub Issues, through the `gh` CLI, which infers the 
 
 ## List
 
-Ready to work: `gh issue list --label ready-for-agent`. Untriaged: `gh issue list --search "-label:needs-info -label:ready-for-agent -label:ready-for-human"`. Any other state: `--label <state>`.
+Untriaged: `gh issue list --search "-label:bug -label:enhancement -label:documentation -label:question"`. Waiting on info: `gh issue list --label question`. Ready: `gh issue list --search "-label:question"`, keeping those with a type label.
 
 ## Claim
 
@@ -28,12 +28,12 @@ Ready to work: `gh issue list --label ready-for-agent`. Untriaged: `gh issue lis
 
 ## Set state
 
-`gh issue edit <n> --add-label <state> --remove-label <other states>`. Create a missing label with `gh label create`.
+A type label marks the issue triaged: `bug`, `enhancement`, or `documentation`. `needs-info` adds `question`, and removes it once answered. `ready-for-agent` and `ready-for-human` look the same on GitHub, so the brief says which. `wontfix` is **Close**. Use `gh issue edit <n> --add-label <label> --remove-label <label>`, and never create a label.
 
 ## Close
 
-`gh issue close <n> --comment "<what landed>"`. For `wontfix`, add `--reason "not planned"`.
+`gh issue close <n> --comment "<what landed>"`. For `wontfix`, add `--reason "not planned"` and the `wontfix`, `duplicate`, or `invalid` label that fits.
 
 ---
 
-Adapted from [mattpocock/skills setup-matt-pocock-skills/issue-tracker-github.md](https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md), aligned to 5beb35b. The operation headings and the `gh` 2.94+ blocking flags are local.
+Adapted from [mattpocock/skills setup-matt-pocock-skills/issue-tracker-github.md](https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md), aligned to 5beb35b. The operation headings, the `gh` 2.94+ blocking flags, and tracking state with only default labels are local.
