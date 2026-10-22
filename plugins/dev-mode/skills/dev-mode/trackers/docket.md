@@ -1,18 +1,18 @@
 # Tracker: docket
 
-Tasks live in the repo's docket store under `.git/docket/`, shared by every worktree. The `docket` skill covers the CLI. This file maps dev-mode's tracker operations onto it. Writes are local, so showing the draft of a new task is the only approval step.
+Tasks live in the repo's docket store. The `docket` skill covers the CLI and its rules; this file only maps dev-mode's tracker operations onto it. Writes are local, so showing the draft of a new task is the only approval step.
 
 ## Create
 
-`docket create "<title>" --file <body.md>`. Write the body to a scratch file first. Piped stdin can hang.
+`docket create "<title>" --file <body.md>`.
 
 ## Read
 
-`docket show <ID>` prints the body and notes, plus the parent, blockers, and subtasks.
+`docket show <ID>`.
 
 ## List
 
-Ready to work: `docket ready`. Untriaged: `docket ls --status open`. Any other state: `docket ls --status <state>`.
+Ready to work: `docket ready --status ready-for-agent`. Untriaged: `docket ls --status open`. Any other state: `docket ls --status <state>`.
 
 ## Claim
 
@@ -20,15 +20,15 @@ Ready to work: `docket ready`. Untriaged: `docket ls --status open`. Any other s
 
 ## Note
 
-`docket note <ID> "<text>"`. Resume notes and triage notes go here.
+`docket note <ID> "<text>"`.
 
 ## Split
 
-`docket create "<title>" --parent <ID> --dep <blocker-ID> --file <body.md>`, with `--dep` repeated per blocker. Create blockers first so each `--dep` names a real ID.
+`docket create "<title>" --parent <ID> --dep <blocker-ID> --file <body.md>`, with `--dep` repeated per blocker.
 
 ## Set state
 
-`docket set <ID> status <state>`, using the triage state names as statuses. `open` counts as `needs-triage`.
+`docket set <ID> status <state>`, using the triage state names as statuses, except `needs-triage`, which is docket's default `open`.
 
 ## Close
 

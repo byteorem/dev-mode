@@ -1,5 +1,5 @@
 {
   "name": "dev-mode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Engineering workflow: a router that picks a playbook, reusable techniques, principles, and gates on anything other people can see."
 }
